@@ -1,4 +1,4 @@
-exec    = ./bin/a.out
+exec    = ./lib/a.out
 sources = $(wildcard src/*.c)
 objects = $(sources:.c=.o)
 flags   = -g -Wall -lm -ldl -fPIC -rdynamic
@@ -10,7 +10,7 @@ $(exec) : $(objects)
 	gcc -c $(flags) $< -o $@
 
 run:
-	-./bin/a.out
+	-./lib/a.out
 
 clean:
 	-rm ./bin/*.out
