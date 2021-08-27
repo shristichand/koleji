@@ -1,5 +1,10 @@
 #include "include/lexer.h"
 
+#ifndef INCLUDED_STDLIB_H
+    #include <stdlib.h>
+    #define INCLUDED_STDLIB_H
+#endif
+
 Lexer *init_lexer(char *src)
 {
     //Lexer Initialization
