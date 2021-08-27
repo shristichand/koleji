@@ -1,6 +1,8 @@
 #ifndef KOL_LEXER_H
     #define KOL_LEXER_H
 
+    #include "token.h"
+
     typedef struct st_Lexer {
 
         char *src;
