@@ -21,7 +21,7 @@ void kol_compile(char *src)
     Parser *parser = init_parser(lexer);
     AST *root = parser_parse(parser);
 
-    //printf("%p\n",root);
+    printf("%p\n",root);
     
     Token *token = 0;
 
