@@ -1,6 +1,11 @@
 #include "include/lexer.h"
 #include "include/macros.h"
 
+#ifndef INCLUDED_STDIO_H
+    #include <stdio.h>
+    #define INCLUDED_STDIO_H
+#endif
+
 #ifndef INCLUDED_STDLIB_H
     #include <stdlib.h>
     #define INCLUDED_STDLIB_H
@@ -85,9 +90,9 @@ Token *lexer_parse_number(Lexer *lexer)
 {
     char *value = (char *)calloc(1,sizeof(char));
 
-    while(isalpha(lexer->c))
+    while(isdigit(lexer->c))
     {
-        value = realloc(value, (strlen(value) + 2) * sizeof(char));
+        value = realloc(value, (strlen(value) + 3) * sizeof(char));
         strcat(value, (char []){lexer->c, 0});
         lexer_advance(lexer);
     }
@@ -101,25 +106,21 @@ Token *lexer_next_token(Lexer *lexer)
     {
         lexer_skip_whitespace(lexer);
 
-        if(isalnum(lexer->c))
-            return lexer_advance_with(lexer, lexer_parse_id(lexer));
+        if(isalpha(lexer->c))
+            return lexer_parse_id(lexer);
 
         if(isdigit(lexer->c))
-            return lexer_advance_with(lexer, lexer_parse_number(lexer));
+            return lexer_parse_number(lexer);
 
         switch(lexer->c)
         {
-            case '=':{
-                if(lexer_peek(lexer, 1) == '>')
-                    return lexer_advance_with(lexer, init_token("=>", TK_RARROW));
-                return lexer_advance_with(lexer, init_token("=", TK_EQUALS));
-            } break;
-
+            case '=': return lexer_advance_current(lexer, TK_EQUALS);
             case '(': return lexer_advance_current(lexer, TK_LPAREN);
             case ')': return lexer_advance_current(lexer, TK_RPAREN);
             case '<': return lexer_advance_current(lexer, TK_LT);
             case '>': return lexer_advance_current(lexer, TK_GT);
-            case '{': return lexer_advance_current(lexer, TK_LBARCE);
+            case '~': return lexer_advance_current(lexer, TK_TILED);
+            case '{': return lexer_advance_current(lexer, TK_LBRACE);
             case '}': return lexer_advance_current(lexer, TK_RBRACE);
             case ':': return lexer_advance_current(lexer, TK_COLON);
             case ',': return lexer_advance_current(lexer, TK_COMMA);
@@ -133,5 +134,5 @@ Token *lexer_next_token(Lexer *lexer)
             } break;
         }
     }
-    return init_token(0, TK_EOF);
+    return init_token('\0', TK_EOF);
 }
