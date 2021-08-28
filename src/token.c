@@ -26,7 +26,7 @@ Token *init_token(char *value, int type)
     return token;
 }
 
-static const char *token_type_to_string(int type)
+const char *token_type_to_string(int type)
 {
     switch(type)
     {
@@ -41,7 +41,7 @@ static const char *token_type_to_string(int type)
         case TK_LT       : return "TK_LT";
         case TK_GT       : return "TK_GT";
         case TK_INT      : return "TK_INT";
-        case TK_RARROW   : return "TK_RARROW";
+        case TK_TILED   : return "TK_TILED";
         case TK_SEMICOLON: return "TK_SEMICOLON";
         case TK_EOF      : return "TK_EOF";
     }
@@ -52,7 +52,7 @@ static const char *token_type_to_string(int type)
 char *token_to_string(Token *token)
 {
     const char *type_string = token_type_to_string(token->type);
-    const char *template    = "<type='%s', int_type='%d', value='%s'>\n";
+    const char *template    = "<type='%s', int_type='%d', value='%s'>";
 
     char *string = (char *) calloc( strlen(type_string) + strlen(template) + 8, sizeof(char));
     sprintf(string, template, type_string, token->type, token->value);
