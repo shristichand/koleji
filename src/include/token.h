@@ -17,7 +17,7 @@
             TK_LT,
             TK_GT,
             TK_INT,
-            TK_RARROW,
+            TK_TILED,
             TK_SEMICOLON,
             TK_EOF,
         } type;
@@ -26,7 +26,7 @@
 
     Token *init_token(char *value, int type);
 
-    static const char *token_type_to_string(int type);
+    const char *token_type_to_string(int type);
 
     char *token_to_string(Token *token);
 
