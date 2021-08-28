@@ -10,7 +10,7 @@
             TK_EQUALS,  
             TK_LPAREN,
             TK_RPAREN,
-            TK_LBARCE,
+            TK_LBRACE,
             TK_RBRACE,
             TK_COLON,
             TK_COMMA,

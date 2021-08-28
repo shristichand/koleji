@@ -34,7 +34,7 @@ const char *token_type_to_string(int type)
         case TK_EQUALS   : return "TK_EQUALS";
         case TK_LPAREN   : return "TK_LPAREN";
         case TK_RPAREN   : return "TK_RPAREN";
-        case TK_LBARCE   : return "TK_LBARCE";
+        case TK_LBRACE   : return "TK_LBARCE";
         case TK_RBRACE   : return "TK_RBARCE";
         case TK_COLON    : return "TK_COLON";
         case TK_COMMA    : return "TK_COMMA";
