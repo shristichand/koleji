@@ -20,11 +20,13 @@
             TK_LARROW,
             TK_RARROW,
             TK_SEMICOLON,
-            TK_EOF
+            TK_EOF,
         } type;
 
     } Token;
 
     Token *init_token(char *value, int type);
+
+    Token *token_to_string(Token *token);
 
 #endif
