@@ -19,7 +19,7 @@ void kol_compile(char *src)
 
     while( (token = lexer_next_token(lexer)) != TK_EOF)
     {
-        printf("TOKEN (%s) = (%d)\n", token->value, token->type);
+        printf("%s",token_to_string(token));
     }
 }
 
