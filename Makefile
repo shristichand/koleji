@@ -22,3 +22,7 @@ erase:
 	-rm *.o
 	-rm *.a
 	-rm src/*.o
+	-clear
+
+magic:
+	-make clean && make && clear && make run
