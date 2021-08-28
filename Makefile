@@ -13,7 +13,12 @@ run:
 	-./bin/a.out ./examples/main.kol
 
 clean:
+	-rm *.o
+	-rm *.a
+	-rm src/*.o
 	-rm ./bin/*.out
+
+erase:
 	-rm *.o
 	-rm *.a
 	-rm src/*.o
