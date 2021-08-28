@@ -14,5 +14,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    kol_compile_file(argv[1]);
+
     return 0;
 }
