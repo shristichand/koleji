@@ -1,5 +1,6 @@
 #include "include/lexer.h"
 #include "include/macros.h"
+#include "include/token.h"
 
 #ifndef INCLUDED_STDIO_H
     #include <stdio.h>
@@ -102,7 +103,7 @@ Token *lexer_parse_number(Lexer *lexer)
 
 Token *lexer_next_token(Lexer *lexer)
 {
-    while(lexer->c != TK_EOF)
+    while(lexer->c != '\0')
     {
         lexer_skip_whitespace(lexer);
 
@@ -134,5 +135,5 @@ Token *lexer_next_token(Lexer *lexer)
             } break;
         }
     }
-    return init_token('\0', TK_EOF);
+    return init_token(0, TK_EOF);
 }
