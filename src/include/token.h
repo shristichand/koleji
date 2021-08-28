@@ -19,7 +19,8 @@
             TK_INT,
             TK_LARROW,
             TK_RARROW,
-            TK_SEMICOLON
+            TK_SEMICOLON,
+            TK_EOF,
         } type;
 
     } Token;
