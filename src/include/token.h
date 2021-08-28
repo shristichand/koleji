@@ -20,7 +20,7 @@
             TK_LARROW,
             TK_RARROW,
             TK_SEMICOLON,
-            TK_EOF,
+            TK_EOF
         } type;
 
     } Token;
