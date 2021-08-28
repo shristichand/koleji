@@ -28,6 +28,6 @@
 
     static const char *token_type_to_string(int type);
 
-    Token *token_to_string(Token *token);
+    char *token_to_string(Token *token);
 
 #endif
