@@ -23,14 +23,12 @@ Parser *init_parser(Lexer *lexer)
 
 Token *parser_eat(Parser *parser, int type)
 {
-    printf("\nParsing %s\n",token_to_string(parser->token));
     if(parser->token->type != type)
     {
         printf("[Parser] :: Unidentified Token %s.\n",token_to_string(parser->token));
         printf("Insted, expected '%s'\n",token_type_to_string(type));
         exit(1);
     }
-    printf("Parsed %s\n",token_to_string(parser->token));
 
     parser->token = lexer_next_token(parser->lexer);
 
@@ -148,10 +146,9 @@ AST *parser_parse_int(Parser *parser)
 {
     //printf("Called");
     int value = atoi(parser->token->value);
-    printf("\n%d\n",value);
     parser_eat(parser, TK_INT);
 
-    AST *ast = init_ast(AST_INT);
+    AST *ast      = init_ast(AST_INT);
     ast->intValue = value;
 
     return ast;
