@@ -22,9 +22,11 @@ void kol_compile(char *src)
     Parser *parser = init_parser(lexer);
     AST *root = parser_parse(parser);
 
+
+    printf("%p",root);
     char *fasm = asm_f(root);
 
-    printf("%s\n",fasm);
+    printf("\n%s\n",fasm);
 }
 
 void kol_compile_file(const char* fileName)
