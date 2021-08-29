@@ -3,6 +3,7 @@
 #include "include/parser.h"
 #include "include/token.h"
 #include "include/AST.h"
+#include "include/FASM.h"
 #include "include/io.h"
 
 #ifndef INCLUDED_STDIO_H
@@ -21,15 +22,9 @@ void kol_compile(char *src)
     Parser *parser = init_parser(lexer);
     AST *root = parser_parse(parser);
 
-    printf("%p\n",root);
-    
-    Token *token = 0;
+    char *fasm = asm_f(root);
 
-    while( (token = lexer_next_token(lexer))->type != TK_EOF)
-    {
-        printf("%s\n",token_to_string(token));
-    }
-
+    printf("%s\n",fasm);
 }
 
 void kol_compile_file(const char* fileName)
